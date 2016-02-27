@@ -57,6 +57,9 @@ var paddleXPosition = (gameCanvas.width - paddleWidth) / 2;
 var rightPressed = false;
 var leftPressed = false;
 
+// how many lives you have before you get a game over
+var lives = 3;
+
 
 // add event listener ( Game Control )
 document.addEventListener("keydown", keyDownHandler, false);
@@ -113,8 +116,18 @@ var bounceBall = function()
         }
         else
         {
-            alert("GAME OVER");
-            document.location.reload();
+            lives--;
+            if(!lives) {
+                alert("GAME OVER");
+                document.location.reload();
+            }
+            else {
+                x = gameCanvas.width/2;
+                y = gameCanvas.height-30;
+                xVelocity = 2;
+                yVelocity = -2;
+                paddleXPosition = (gameCanvas.width-paddleWidth)/2;
+            }
         }
 
     }
@@ -170,8 +183,9 @@ function collisionDetection(){
                     b.status = 0;
                     score++;
 
-                    if (score == brickColumnCount * brickColumnCount){
+                    if (score == brickColumnCount * brickRowCount){
                         alert("You have won !!!");
+                        document.location.reload();
                     }
                 }
             }
