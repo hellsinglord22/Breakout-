@@ -23,6 +23,9 @@ for(var column = 0; column < brickColumnCount; column++) {
     }
 }
 
+// player score
+var score = 0;
+
 // initial position
 var x = gameCanvas.width / 2;
 var y = gameCanvas.height - 30;
@@ -165,11 +168,23 @@ function collisionDetection(){
                 if(x > b.x && x < b.x+brickWidth && y > b.y && y < b.y+brickHeight) {
                     yVelocity *= -1;
                     b.status = 0;
+                    score++;
+
+                    if (score == brickColumnCount * brickColumnCount){
+                        alert("You have won !!!");
+                    }
                 }
             }
         }
     }
 }
+
+
+var drawScore = function(){
+    brush.font = "16px Arial";
+    brush.fillStyle = "#0095DD";
+    brush.fillText("Score: "+score, 8, 20);
+};
 
 
 
@@ -179,6 +194,7 @@ function draw()
     drawBall();
     drawPaddle();
     drawBricks();
+    drawScore();
     bounceBall();
     collisionDetection();
     movePaddle();
