@@ -37,8 +37,7 @@ var yVelocity = -2;
 // the radious of the ball
 var radius = 10;
 var secuirty = 5;
-var colors = ["red", "green", "#0095DD"];
-var colorIterator = 0;
+
 
 // ball default color
 var defaultColor = "#0095DD";
@@ -112,12 +111,10 @@ var bounceBall = function()
     if( (x - (radius / 2) - secuirty <= 0) || (x + (radius / 2) + secuirty >= gameCanvas.width))
     {
         xVelocity *= -1;
-        brush.fillStyle = colors[(++colorIterator) % 3];
     }
     else if (y - (radius / 2) - secuirty <= 0 )
     {
         yVelocity *= -1;
-        brush.fillStyle = colors[(++colorIterator) % 3];
     }
     else if (y + (radius / 2) + secuirty >= gameCanvas.height)
     {
