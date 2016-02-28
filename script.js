@@ -64,6 +64,7 @@ var lives = 3;
 // add event listener ( Game Control )
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
+document.addEventListener("mousemove", mouseMoveHandler, false);
 
 // handling if ( <- or -> ) are hit
 function keyDownHandler(e){
@@ -82,6 +83,18 @@ function keyUpHandler(e){
     else if(e.keyCode == 37) {
         leftPressed = false;
     }
+}
+
+// playing using the mouse
+function mouseMoveHandler(e)
+{
+    // current mouse position - left offset of the canves so that the mouse
+    // position is relvant to the canves not the document AKA window
+    var relativeX = e.clientX - gameCanvas.offsetLeft;
+    if(relativeX > 0 && relativeX < gameCanvas.width) {
+        paddleXPosition = relativeX - paddleWidth/2;
+    }
+
 }
 
 
@@ -216,7 +229,7 @@ function draw()
     drawPaddle();
     drawBricks();
     drawScore();
-    drawLives(); 
+    drawLives();
     bounceBall();
     collisionDetection();
     movePaddle();
