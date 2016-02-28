@@ -217,4 +217,10 @@ function draw()
 }
 
 // start the game and bounce the ball
-setInterval(draw, 10);
+
+document.addEventListener('keydown', gameStart, false);
+
+function gameStart(){
+    setInterval(draw, 10);
+    document.removeEventListener('keydown', gameStart, false); 
+}
