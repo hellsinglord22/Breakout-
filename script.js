@@ -186,6 +186,7 @@ function collisionDetection(){
                     if (score == brickColumnCount * brickRowCount){
                         alert("You have won !!!");
                         document.location.reload();
+
                     }
                 }
             }
@@ -200,6 +201,12 @@ var drawScore = function(){
     brush.fillText("Score: "+score, 8, 20);
 };
 
+var drawLives = function(){
+    brush.font = "16 px Arial";
+    brush.fillStyle = "#0095DD";
+    brush.fillText("Lives: " + lives, gameCanvas.width-65, 20);
+};
+
 
 
 function draw()
@@ -209,6 +216,7 @@ function draw()
     drawPaddle();
     drawBricks();
     drawScore();
+    drawLives(); 
     bounceBall();
     collisionDetection();
     movePaddle();
@@ -222,5 +230,5 @@ document.addEventListener('keydown', gameStart, false);
 
 function gameStart(){
     setInterval(draw, 10);
-    document.removeEventListener('keydown', gameStart, false); 
+    document.removeEventListener('keydown', gameStart, false);
 }
