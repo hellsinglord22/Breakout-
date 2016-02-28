@@ -134,8 +134,7 @@ var bounceBall = function()
             else {
                 x = gameCanvas.width/2;
                 y = gameCanvas.height-30;
-                xVelocity = 2;
-                yVelocity = -2;
+                
                 paddleXPosition = (gameCanvas.width-paddleWidth)/2;
             }
         }
